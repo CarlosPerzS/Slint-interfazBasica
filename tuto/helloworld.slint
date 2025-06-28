@@ -1,0 +1,47 @@
+import { AboutSlint, VerticalBox } from "std-widgets.slint";
+export component Boton {
+    width: 200px;
+    height: 30px;
+    in property <string> name;
+    in property <int> clickeos;
+    in property <brush> color;
+    callback clicked();
+    Rectangle {
+        background: color;
+        Text {
+            text: name + clickeos;
+            font-size: 30px;
+        }
+        TouchArea {
+            clicked => {
+                root.clicked();
+            }
+        }
+    }
+}
+
+
+export component MainWindow{
+    height: 300px;
+    width: 300px;
+    property <int> contador: 0;
+    property <string> texto: "";
+    VerticalBox {
+    background: #123123;
+    spacing: 10px;
+    TextInput {
+        height: 30px;
+        edited => {
+            root.texto = self.text;
+        }
+    }
+    Boton {
+        clickeos: contador;
+        name: texto;
+        color: #930e0e;
+        clicked => {
+            contador+=1;
+        }
+    }
+    }
+}
