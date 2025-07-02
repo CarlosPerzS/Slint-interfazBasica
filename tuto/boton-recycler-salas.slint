@@ -1,0 +1,53 @@
+import { Button, HorizontalBox } from "std-widgets.slint";
+export component botonRecyclerSalas{
+    width: 342px;
+    height: 56px;
+    property <string> texto: "123abcdefghijklmnopqrstuvwxabcdefghiiiiiiiiiiijkggggggabcdefghijklmnop";
+    Rectangle {
+        background: #6A95B3;
+        width: root.width;
+        height: root.height;
+        border-radius: 16px;
+        HorizontalBox {
+            spacing: 0px;
+            padding: 0px;
+            TouchArea { //nombre de la sala
+                height: root.height;
+                width: 289px;
+                clicked => {
+                    debug("click");
+                }
+                Rectangle { // contenedor para alinear
+                    width: parent.width;
+                    height: parent.height;
+                    background: transparent;
+                    Text {
+                        clip: true;
+                        text: texto;
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: #ffffff;
+                        horizontal-alignment: left;
+                        vertical-alignment: center;
+                        x: 10px;
+                        width: parent.width;
+                        height: parent.height;
+                    }
+                }
+            }
+            TouchArea { //boton para ver code de sala
+                height: root.height;
+                width: 53px;
+                clicked => {
+                    debug("click2");
+                }
+                Image {
+                    source: @image-url("img/Eye.png");
+                    height: 30px;
+                    width: 35px;
+                }
+            }
+        }
+    }
+}
+

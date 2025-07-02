@@ -1,18 +1,28 @@
-import { AboutSlint, VerticalBox } from "std-widgets.slint";
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+
 export component Boton {
-    width: 200px;
-    height: 30px;
     in property <string> name;
     in property <int> clickeos;
     in property <brush> color;
     callback clicked();
+
     Rectangle {
         background: color;
-        Text {
-            text: name + clickeos;
-            font-size: 30px;
+
+        VerticalBox {
+            width: parent.width;
+
+            Text {
+                wrap: word-wrap; //delimita 
+                text: name + " " + clickeos;
+                font-size: 20px;
+                horizontal-alignment: center;
+            }
         }
+
         TouchArea {
+            width: parent.width;
+            height: parent.height;
             clicked => {
                 root.clicked();
             }
@@ -20,28 +30,47 @@ export component Boton {
     }
 }
 
-
-export component MainWindow{
-    height: 300px;
+export component MainWindow {
     width: 300px;
+    height: 300px;
+
     property <int> contador: 0;
     property <string> texto: "";
-    VerticalBox {
-    background: #123123;
-    spacing: 10px;
-    TextInput {
-        height: 30px;
-        edited => {
-            root.texto = self.text;
+
+    Rectangle {
+        width: parent.width;
+        background: #897d7d;
+
+        VerticalBox {
+            spacing: 10px;
+            HorizontalBox {
+                alignment: center;
+            Rectangle {
+                background: #a2a3d3;
+                height: input.height;
+                width: 200px;
+                input:=TextInput {
+                    x: root.x;
+                    width: root.width;
+                    height: 20px;
+                    edited => {
+                        root.texto = self.text;
+                    }
+                }
+            }
+            }
+
+            HorizontalBox {
+                spacing: 4px;
+                Boton {
+                    name: texto;
+                    clickeos: contador;
+                    color: #930e0e;
+                    clicked => {
+                        contador += 1;
+                    }
+                }
+            }
         }
-    }
-    Boton {
-        clickeos: contador;
-        name: texto;
-        color: #930e0e;
-        clicked => {
-            contador+=1;
-        }
-    }
     }
 }

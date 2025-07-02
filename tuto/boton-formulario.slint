@@ -1,0 +1,22 @@
+import { Button } from "std-widgets.slint";
+export component botonFormulario{
+    width: 153px;
+    height: 56px;
+    Rectangle {
+        background: #E8E8E8;
+        border-radius: 16px;
+        Button {
+            width: root.width;
+            height: root.height;
+            clicked => {
+                debug("click");
+            }
+        }
+        Text {
+            text: "Votar";
+            font-size: 20px;
+            font-weight: 700;
+            color: #364D7B;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+import { Button } from "std-widgets.slint";
+export component botonPrincipal{
+    width: 231px;
+    height: 52px;
+    Rectangle {
+        background: #109DC4;
+        border-radius: 16px;
+        Button {
+            width: root.width;
+            height: root.height;
+            clicked => {
+                debug("click");
+            }
+        }
+        Text {
+            text: "Iniciar sesion";
+            font-size: 20px;
+            font-weight: 600;
+            color: #000000;
+        }
+    }
+}
