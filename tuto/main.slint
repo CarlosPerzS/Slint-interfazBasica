@@ -1,0 +1,16 @@
+@font-face {
+    name: "Source Sans Pro";
+    src: @path("fonts/SourceSansPro.otf");
+}
+
+export component MainWindow inherits Window {
+    width: 400px;
+    height: 100px;
+
+    Text {
+        text: "Hola con fuente";
+        font-family: "Source Sans Pro";
+        font-size: 20px;
+        color: #000000;
+    }
+}
